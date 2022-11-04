@@ -148,14 +148,23 @@ export const constantRoutes = [
       }
     ]
   },
-
   {
     path: 'external-link',
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'https://panjiachen.gitee.io/vue-element-admin-site/zh/guide/',
+        meta: { title: '资料', icon: 'link' }
+      }
+    ]
+  },
+  {
+    path: 'external-link',
+    component: Layout,
+    children: [
+      {
+        path: 'https://www.bing.com',
+        meta: { title: '必应', icon: 'link' }
       }
     ]
   },
