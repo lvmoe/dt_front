@@ -1,7 +1,6 @@
 <template>
     <div class="dashboard-container">
-        <div id="cesiumContainer">
-        </div>
+        <div id="cesiumContainer"></div>
     </div>
 </template>
 
@@ -31,13 +30,22 @@ export default {
             useDefaultRenderLoop: true, //如果需要控制渲染循环，则设为true
             targetFrameRate: undefined, //使用默认render loop时的帧率
             showRenderLoopErrors: false, //如果设为true，将在一个HTML面板中显示错误信息
-            automaticallyTrackDataSourceClocks: true, //自动追踪最近添加的数据源的时钟设置
+            automaticallyTrackDataSourceClocks: false, //自动追踪最近添加的数据源的时钟设置
             contextOptions: undefined, //传递给Scene对象的上下文参数（scene.options）
             sceneMode: Cesium.SceneMode.SCENE3D, //初始场景模式
             mapProjection: new Cesium.WebMercatorProjection(), //地图投影体系
             dataSources: new Cesium.DataSourceCollection(), //需要进行可视化的数据源的集合
         });
         window.viewer = viewer;
+        viewer._cesiumWidget._creditContainer.style.display = 'none';
+
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(104.19, 30.25, 300000.0),
+            orientation: {
+                heading: Cesium.Math.toRadians(0.0),
+                pitch: Cesium.Math.toRadians(-90.0),
+            },
+        });
     },
 };
 </script>
@@ -52,5 +60,5 @@ export default {
             height: 100%;
         }
     }
-}        
+}
 </style>
